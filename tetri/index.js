@@ -6,6 +6,7 @@ const bgm = document.createElement("audio");
 const breakSound = document.createElement("audio");
 const drop = document.createElement("audio");
 let rotatedShape;
+let autoFallCount = 0;
 
 bgm.setAttribute("src", "./assets/bgm.mp3");
 bgm.muted = true;
@@ -187,7 +188,7 @@ function lockTetromino() {
 function clearRows() {
   let rowsCleared = 0;
 
-  // 아래에서부터 검사하면서 완전한 줄을 찾아서 지웁니다.
+  
   for (let y = BOARD_HEIGHT - 1; y >= 0; y--) {
     let rowFilled = true;
 
@@ -257,6 +258,7 @@ function rotateTetromino() {
 
 // Move the tetromino
 function moveTetromino(direction) {
+  
   let row = currentTetromino.row;
   let col = currentTetromino.col;
   if (direction === "left") {
@@ -283,13 +285,26 @@ function moveTetromino(direction) {
       currentTetromino.col = col;
       currentTetromino.row = row;
       drawTetromino();
+      autoFallCount = 0;
     } else {
-      lockTetromino();
+      autoFallCount++;
+      const maxAutoFallCount=5;
+      if(autoFallCount>=maxAutoFallCount){
+        resetGame();
+      }
     }
   }
-
-  moveGhostTetromino();
-}
+  if (!canTetrominoMove(1, 0)) {
+    resetGame();
+  }
+    moveGhostTetromino();
+  }
+  
+  function resetGame() {
+    // Aquí puedes realizar acciones para reiniciar el juego, como reiniciar el tablero, puntaje, etc.
+    // Por ejemplo, podrías recargar la página o llamar a una función que restablezca todo.
+    location.reload(); // Esto recargará la página y reiniciará el juego.
+  }
 
 drawTetromino();
 setInterval(moveTetromino, 500);
