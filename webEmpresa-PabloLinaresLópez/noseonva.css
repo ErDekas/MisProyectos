@@ -1,0 +1,567 @@
+/* Reinicio de márgenes predeterminados y definición del fondo gradiente */
+body {
+    margin: 0;
+    background: linear-gradient(172deg, #6644ff 50%, #ff99dd 300%);
+    font-family: "Euclid Circular A", "Poppins";
+    color: #f7f7f7;
+}
+
+/* Asegurando que html y body ocupen toda la altura */
+html, body {
+    height: 100%;
+}
+
+/* Estilo para la sección de posición fija en la parte inferior */
+section {
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    background: #2f4766;
+    padding-top: 60px;
+}
+
+/* Estilo para la sección de pie de página */
+footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin: 0 70px;
+}
+
+/* Consulta de medios para pantallas más pequeñas (<620px) */
+/* @media (max-width: 620px) {
+    footer {
+        flex-direction: column;
+    }
+
+    footer.bottom {
+        gap: 40px;
+        flex-direction: column-reverse;
+    }
+} */
+
+/* Estilo para imágenes dentro del pie de página */
+footer > img {
+    margin-top: 10px;
+}
+
+/* Consulta de medios para pantallas más grandes (>=620px) */
+/* @media (min-width: 620px) {
+    footer {
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 0;
+    }
+} */
+
+/* Estilo adicional para el pie de página */
+footer {
+    color: #a2b5cd;
+}
+
+/* Estilo para las secciones superior e inferior del pie de página */
+footer.top {
+    border-bottom: 2px solid #3a4f6a;
+    padding-bottom: 20px;
+}
+
+footer.bottom {
+    padding: 20px 0;
+    justify-content: space-between;
+}
+
+/* Estilo para enlaces en la sección superior del pie de página */
+footer.top .links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.links > div {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Estilo para el encabezado del pie de página */
+footer h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #f7f7f7;
+}
+
+/* Estilo para el texto legal */
+.legal {
+    font-size: 12px;
+}
+
+.legal > a {
+    margin: 0 4px;
+}
+
+.legal > span {
+    margin-right: 10px;
+}
+
+/* Estilo adicional para enlaces en la sección inferior del pie de página */
+footer.bottom .links {
+    display: flex;
+    gap: 18px;
+}
+
+footer.bottom .links > a {
+    font-size: 24px;
+}
+
+/* Consulta de medios para pantallas muy pequeñas (<420px) */
+/* @media (max-width: 420px) {
+    footer {
+        text-align: center;
+        align-items: center;
+    }
+
+    footer.top .links {
+        grid-template-columns: 1fr;
+    }
+
+    footer.bottom {
+        align-items: center;
+    }
+
+    .legal > span {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 2px;
+    }
+} */
+
+/* Reinicio del modelo de caja para todos los elementos */
+* {
+    box-sizing: border-box;
+}
+
+/* Definición del color primario como variable */
+:root {
+    --color-primary: #2f67ec;
+}
+
+/* Estilo para el cuerpo */
+body {
+    font-family: "Euclid Circular A", "Poppins";
+    background: #12161f;
+    color: white;
+    margin: 0;
+    height: 94vh;
+    display: grid;
+    place-items: center;
+}
+
+/* Estilo para la barra de navegación */
+nav {
+    position:absolute;
+    left: 31%;
+    background: #1f2635;
+    font-weight: 400;
+    top: 0;
+    font-size: 0;
+    display: flex;
+    padding: 0;
+    width: 120%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Estilo para enlaces de navegación */
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Estilo para enlaces de navegación visitados */
+nav a:visited {
+    color: white;
+}
+
+/* Estilo para elementos de navegación */
+nav .item {
+    font-size: 0.8rem;
+    display: inline-block;
+    position: relative;
+    padding: 0 20px;
+    cursor: pointer;
+    z-index: 5;
+    min-width: 20%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+/* Estilo para el menú desplegable */
+.dropdown {
+    overflow: hidden;
+    list-style: none;
+    position: absolute;
+    padding: 0;
+    width: 100%;
+    left: 0;
+    top: 62px;
+}
+
+.dropdown > div {
+    transform: translate(0, -100%);
+    transition: all 0.5s 0.1s;
+    position: relative;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: var(--color-primary);
+}
+
+.dropdown a:hover {
+    background: #254fb5;
+}
+
+/* Estilo para el efecto de subrayado */
+.underline {
+    height: 6px;
+    background: var(--color-primary);
+    position: absolute;
+    bottom: 0;
+    width: 20%;
+    z-index: 2;
+    pointer-events: none;
+    transition: 0.35s;
+}
+
+/* Estilo para el efecto de subrayado al pasar el mouse */
+nav .item:hover > .dropdown > div {
+    transform: translate(0);
+}
+
+/* Estilos individuales para el subrayado de cada elemento de navegación al pasar el mouse */
+nav .item:nth-child(1):hover ~ .underline {
+    transform: translate(0, 0);
+}
+
+nav .item:nth-child(2):hover ~ .underline {
+    transform: translate(100%, 0);
+}
+
+nav .item:nth-child(3):hover ~ .underline {
+    transform: translate(200%, 0);
+}
+
+nav .item:nth-child(4):hover ~ .underline {
+    transform: translate(300%, 0);
+}
+nav .item:nth-child(5):hover ~ .underline {
+    transform: translate(400%, 0);
+}
+
+/* Estilo para una imagen dentro de la sección principal */
+main > img {
+    margin-bottom: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px; /* Ajusta este valor para la altura deseada del encabezado */
+}
+  .background {
+    position: fixed;
+    top: -50vmin;
+    left: -50vmin;
+    width: 100vmin;
+    height: 100vmin;
+    border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+    background: #65c8ff;
+  }
+  
+  .background::after {
+    content: "";
+    position: inherit;
+    right: -50vmin;
+    bottom: -55vmin;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: #143d81;
+  }
+  .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  width: 360px;
+  margin: 20px;
+  padding: 20px 30px 24px;
+  border-radius: 1.25rem;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 100px 100px rgb(0 0 0 / 10%);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -880px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background: #216ce7;
+}
+
+.card .logo {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 64px;
+  height: 64px;
+}
+
+.card > h2 {
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 30px;
+  color: #2a3444;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+  
+  .form {
+    width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 0;
+    margin: 0 0 36px;
+    display: grid;
+    gap: 16px;
+  }
+  
+  .form > input,
+  .form > button {
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
+  }
+  
+  .form > input {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 24px;
+    color: #11274c;
+  }
+  
+  .form > input::placeholder {
+    color: #cac8c8;
+  }
+  
+  .form > button {
+    cursor: pointer;
+    width: 100%;
+    height: 56px;
+    padding: 0 16px;
+    background: #216ce7;
+    color: #f9f9f9;
+    border: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: all 0.375s;
+  }
+  
+  .card > footer {
+    color: #a1a1a1;
+  }
+  
+  .card > footer > a {
+    color: #216ce7;
+  }
+  .form > textarea,
+  .form > button {
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
+  }
+  
+  .form > textarea {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 24px;
+    color: #11274c;
+  }
+  
+  .form > textarea::placeholder {
+    color: #cac8c8;
+  }
+  select{
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
+  }
+  
+  select {
+    border: 2px solid #ebebeb;
+    font-family: inherit;
+    font-size: 16px;
+    padding: 0 24px;
+    color: #11274c;
+  }
+  
+  select {
+    color: #cac8c8;
+  }
+
+  p {
+    max-width: 389px; /* Ajusta el ancho según tus preferencias */
+    background-color: #f0f0f0; /* Color de fondo para resaltar el texto */
+    border-radius: 10px; /* Bordes redondeados */
+    color: black;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 45%;
+    padding: 0;
+}
+.cuerpo{
+        flex-direction:row;
+        background: #3a3544;
+        width: 800px; /* Ajusta el ancho del contenedor */
+        margin: 0 auto; /* Centra horizontalmente el contenedor */
+        font-size: 14px;
+}     
+.accordion {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: auto;
+    height: 240px;
+    gap: 72px;
+    transition: 0.3s;
+  }
+  
+  .accordion:hover {
+    gap: 0;
+  }
+  
+  .accordion li {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 80px;
+    border-radius: 50px;
+    opacity: 0.75;
+    cursor: pointer;
+  }
+  
+  .accordion li img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5);
+  }
+  
+  .accordion li,
+  .accordion li img,
+  .accordion li .content,
+  .accordion li .content span {
+    transition: 0.3s;
+  }
+  
+  .accordion h2 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 45px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+  
+  .accordion li .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    color: #fff;
+    padding: 15px;
+    background: #02022e;
+    background: linear-gradient(
+      0deg,
+      rgb(0 0 0 / 70%) 10%,
+      rgb(255 255 255 / 0%) 100%
+    );
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .accordion li .content span {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 50px;
+    translate: -300px 0;
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+  .accordion li:hover {
+    flex: 0 1 260px;
+    scale: 1.1;
+    z-index: 10;
+    opacity: 1;
+  }
+  
+  .accordion li:hover .content {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .accordion li:hover span {
+    translate: -50% 0;
+    opacity: 1;
+    visibility: visible;
+  }
+  
+img.me {
+  width: 30%;
+  height: 45%;
+  z-index: 9999;
+  border: 2px solid aliceblue;
+  float: left;
+  margin: 0%;
+}
+
+p {
+  width: 70%;
+  height: fit-content;
+  float: right;
+  text-align: center;
+  padding: 0 2%;
+}
